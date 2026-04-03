@@ -44,3 +44,7 @@ module monitoringModule 'modules/monitoring.bicep' = {
     tags: tags
   }
 }
+
+output subnetId string = networkModule.outputs.subnetId
+output storageId string = storageModule.outputs.storageId
+output logAnalyticsWorkspaceId string = monitoringModule.outputs.logAnalyticsWorkspaceId
