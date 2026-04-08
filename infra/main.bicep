@@ -7,6 +7,12 @@ param environment string = 'dev'
 @description('Project name used for resource naming')
 param projectName string = 'infra'
 
+@description('AdminUsername for the VM')
+param adminUsername string = 'azureuser'
+
+@secure()
+param adminPassword string
+
 var namePrefix = '${projectName}-${environment}'
 
 var tags = {
@@ -42,6 +48,19 @@ module monitoringModule 'modules/monitoring.bicep' = {
     environment: environment
     namePrefix: namePrefix
     tags: tags
+  }
+}
+
+module computeModule 'modules/compute.bicep' = {
+  name: 'computeDeployment'
+  params: {
+    location: location
+    environment: environment
+    namePrefix: namePrefix
+    tags: tags
+    subnetId: networkModule.outputs.subnetId
+    adminUsername: adminUsername
+    adminPassword: adminPassword
   }
 }
 
