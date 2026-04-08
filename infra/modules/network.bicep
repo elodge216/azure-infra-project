@@ -31,8 +31,22 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
   name: '${namePrefix}-nsg'
   location: location
   tags: tags
-  properties: {
-    securityRules: []
+    properties: {
+    securityRules: [
+      {
+        name: 'Allow-HTTP'
+        properties: {
+          priority: 1000
+          access: 'Allow'
+          direction: 'Inbound'
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '80'
+          sourceAddressPrefix: '*'
+          destinationAddressPrefix: '*'
+        }
+      }
+    ]
   }
 }
 

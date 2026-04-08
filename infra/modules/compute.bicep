@@ -72,4 +72,22 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-03-01' = {
   }
 }
 
+resource dscExtension 'Microsoft.Compute/virtualMachines/extensions@2023-03-01' = {
+  name: '${vm.name}/dscExtension'
+  location: location
+  properties: {
+    publisher: 'Microsoft.Powershell'
+    type: 'DSC'
+    typeHandlerVersion: '2.83'
+    autoUpgradeMinorVersion: true
+    settings: {
+      configuration: {
+        url: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/iis/iis-install-windowsvm/DSC/IISInstall.ps1.zip'
+        script: 'IISInstall.ps1'
+        function: 'IISInstall'
+      }
+    }
+  }
+}
+
 output publicIpAddress string = publicIp.properties.ipAddress
