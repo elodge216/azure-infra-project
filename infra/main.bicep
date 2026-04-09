@@ -8,7 +8,7 @@ param environment string = 'dev'
 param projectName string = 'infra'
 
 @description('AdminUsername for the VM')
-param adminUsername string = 'azureuser'
+param adminUsername string = 'webadmin'
 
 @secure()
 param adminPassword string
@@ -67,3 +67,5 @@ module computeModule 'modules/compute.bicep' = {
 output subnetId string = networkModule.outputs.subnetId
 output storageId string = storageModule.outputs.storageId
 output logAnalyticsWorkspaceId string = monitoringModule.outputs.logAnalyticsWorkspaceId
+output vmId string = computeModule.outputs.vmId
+output publicIpAddress string = computeModule.outputs.publicIpAddress

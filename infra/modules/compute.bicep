@@ -72,22 +72,25 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-03-01' = {
   }
 }
 
-resource dscExtension 'Microsoft.Compute/virtualMachines/extensions@2023-03-01' = {
-  name: '${vm.name}/dscExtension'
+resource customScriptExtension 'Microsoft.Compute/virtualMachines/extensions@2023-03-01' = {
+  parent: vm
+  name: 'customScriptExtension'
   location: location
   properties: {
-    publisher: 'Microsoft.Powershell'
-    type: 'DSC'
-    typeHandlerVersion: '2.83'
+    publisher: 'Microsoft.Compute'
+    type: 'CustomScriptExtension'
+    typeHandlerVersion: '1.10'
     autoUpgradeMinorVersion: true
+    protectedSettings: {
+      commandToExecute: 'powershell -ExecutionPolicy Bypass -File install-iis.ps1'
+    }
     settings: {
-      configuration: {
-        url: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/iis/iis-install-windowsvm/DSC/IISInstall.ps1.zip'
-        script: 'IISInstall.ps1'
-        function: 'IISInstall'
-      }
+      fileUris: [
+        'https://github.com/elodge216/azure-infra-project/infra/scripts/install-iis.ps1'
+      ]
     }
   }
 }
 
 output publicIpAddress string = publicIp.properties.ipAddress
+output vmId string = vm.id
