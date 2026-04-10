@@ -89,7 +89,7 @@ resource customScriptExtension 'Microsoft.Compute/virtualMachines/extensions@202
     }
     settings: {
       fileUris: [
-        'https://github.com/elodge216/azure-infra-project/infra/scripts/install-iis.ps1'
+        'https://raw.githubusercontent.com/elodge216/azure-infra-project/main/infra/scripts/install-iis.ps1'
       ]
     }
   }
