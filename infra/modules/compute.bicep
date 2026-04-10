@@ -11,8 +11,11 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2023-04-01' = {
   name: '${namePrefix}-pip'
   location: location
   tags: tags
+  sku: {
+    name: 'Standard'
+  }
   properties: {
-    publicIPAllocationMethod: 'Dynamic'
+    publicIPAllocationMethod: 'Static'
   }
 }
 
