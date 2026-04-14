@@ -49,7 +49,7 @@ infra/
   modules/
     network.bicep
     storage.bicep
-    monitoring.bicepparam
+    monitoring.bicep
     compute.bicep
   scripts/
     install-iis.ps1
