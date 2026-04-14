@@ -39,5 +39,5 @@ jobs:
           parameters-file: ./infra/main.dev.bicepparam
           scope: resourceGroup
           type: deployment
-          deploymentMode: Incremental
+          operation: create
           
