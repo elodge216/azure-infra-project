@@ -33,9 +33,12 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Deploy Bicep
-        uses: azure/arm-deploy@v2
+        uses: azure/bicep-deploy@v2
         with:
-          resourceGroupName: rg-infra-project
-          template: ./infra/main.bicep
-          parameters: ./infra/main.dev.bicepparam
+          resource-group-name: rg-infra-project
+          template-file: ./infra/main.bicep
+          parameters-file: ./infra/main.dev.bicepparam
+          scope: resourceGroup
+          type: deployment
           deploymentMode: Incremental
+          
