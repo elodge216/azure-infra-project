@@ -16,7 +16,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: infra-secrets
 
     env:
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
