@@ -8,13 +8,11 @@ It includes networking, storage, monitoring, and compute resources, and is desig
 
 The solution is parameterized to support multiple environments - dev and prod.
 
-## Live Demo
+## Live Demo - currently deactivated to reduce cost
 
 Web server deployed via infrastructure code:
 
-**IP will be added when project is live**
-
-http://<your-public-ip>
+http://20.3.123.22
 
 ## Architecture
 
