@@ -45,6 +45,9 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-03-01' = {
   name: '${namePrefix}-vm'
   location: location
   tags: tags
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_B2s'
