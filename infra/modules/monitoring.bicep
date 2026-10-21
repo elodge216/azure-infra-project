@@ -33,13 +33,25 @@ resource dataCollectionRule 'Microsoft.Insights/dataCollectionRules@2024-03-11' 
           ]
           samplingFrequencyInSeconds: 60
           counterSpecifiers: [
-            '\\Processor(_Total)\\% Processor Time',
+            '\\Processor(_Total)\\% Processor Time'
             '\\Memory\\Available MBytes'
           ]
         }
       ]
+      windowsEventLogs: [
+        {
+          name: 'windowsEventLogs'
+          streams: [
+            'Microsoft-Event'
+          ]
+          xPathQueries: [
+            'System!*[System[(Level=1 or Level=2 or Level=3)]]'
+            'Application!*[System[(Level=1 or Level=2 or Level=3)]]'
+          ]
+        }
+      ]
     }
-    
+
     destinations: {
       logAnalytics: [
         {
