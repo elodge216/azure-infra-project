@@ -6,6 +6,7 @@ param subnetId string
 param adminUsername string
 @secure()
 param adminPassword string
+param dataCollectionRuleId string
 
 resource publicIp 'Microsoft.Network/publicIPAddresses@2023-04-01' = {
   name: '${namePrefix}-pip'

@@ -61,6 +61,7 @@ module computeModule 'modules/compute.bicep' = {
     subnetId: networkModule.outputs.subnetId
     adminUsername: adminUsername
     adminPassword: adminPassword
+    dataCollectionRuleId: monitoringModule.outputs.dataCollectionRuleId
   }
 }
 
