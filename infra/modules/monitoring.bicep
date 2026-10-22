@@ -51,6 +51,17 @@ resource dataCollectionRule 'Microsoft.Insights/dataCollectionRules@2024-03-11' 
         }
       ]
     }
+    dataFlows: [
+      {
+        streams: [
+          'Microsoft-Perf'
+          'Microsoft-Event'
+        ]
+        destinations: [
+          'logAnalyticsDestination'
+        ]
+      }
+    ]
 
     destinations: {
       logAnalytics: [
