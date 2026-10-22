@@ -75,6 +75,5 @@ resource dataCollectionRule 'Microsoft.Insights/dataCollectionRules@2024-03-11' 
 }
 
 
-
 output logAnalyticsWorkspaceId string = logAnalyticsWorkspace.id
 output dataCollectionRuleId string = dataCollectionRule.id

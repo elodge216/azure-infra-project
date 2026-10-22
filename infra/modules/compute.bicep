@@ -79,6 +79,19 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-03-01' = {
   }
 }
 
+resource azureMonitorAgent 'Microsoft.Compute/virtualMachines/extensions@2026-03-01' = {
+  parent: vm
+  name: 'AzureMonitorWindowsAgent'
+  location: location
+  properties: {
+    publisher: 'Microsoft.Azure.Monitor'
+    type: 'AzureMonitorWindowsAgent'
+    typeHandlerVersion: '1.0'
+    autoUpgradeMinorVersion: true
+    enableAutomaticUpgrade: true
+  }
+}
+
 resource customScriptExtension 'Microsoft.Compute/virtualMachines/extensions@2023-03-01' = {
   parent: vm
   name: 'customScriptExtension'
