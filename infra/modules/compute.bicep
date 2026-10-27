@@ -1,5 +1,4 @@
 param location string
-param environment string // Not used in this module, but included for consistency across modules and potential future use
 param namePrefix string
 param tags object
 param subnetId string
@@ -76,6 +75,14 @@ resource vm 'Microsoft.Compute/virtualMachines@2023-03-01' = {
         }
       ]
     }
+  }
+}
+
+resource dcrAssociation 'Microsoft.Insights/dataCollectionRuleAssociations@2023-03-11' = {
+  name: '${namePrefix}-dcr-association'
+  scope: vm
+  properties: {
+    dataCollectionRuleId: dataCollectionRuleId
   }
 }
 

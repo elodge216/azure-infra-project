@@ -1,6 +1,5 @@
 param location string
 param environment string
-param namePrefix string
 param tags object
 
 var storageAccountName = 'st${uniqueString(resourceGroup().id, environment)}'

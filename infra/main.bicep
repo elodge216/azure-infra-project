@@ -25,7 +25,6 @@ module networkModule 'modules/network.bicep' = {
   name: 'networkDeployment'
   params: {
     location: location
-    environment: environment
     namePrefix: namePrefix
     tags: tags
   }
@@ -36,7 +35,6 @@ module storageModule 'modules/storage.bicep' = {
   params: {
     location: location
     environment: environment
-    namePrefix: namePrefix
     tags: tags
   }
 }
@@ -45,7 +43,6 @@ module monitoringModule 'modules/monitoring.bicep' = {
   name: 'monitoringDeployment'
   params: {
     location: location
-    environment: environment
     namePrefix: namePrefix
     tags: tags
   }
@@ -55,7 +52,6 @@ module computeModule 'modules/compute.bicep' = {
   name: 'computeDeployment'
   params: {
     location: location
-    environment: environment
     namePrefix: namePrefix
     tags: tags
     subnetId: networkModule.outputs.subnetId

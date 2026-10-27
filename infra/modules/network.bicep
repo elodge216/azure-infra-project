@@ -1,5 +1,4 @@
 param location string
-param environment string // Not used in this module, but included for consistency across modules and potential future use
 param namePrefix string
 param tags object
 
