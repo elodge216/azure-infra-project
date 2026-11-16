@@ -12,7 +12,7 @@ The solution is parameterized to support multiple environments - dev and prod.
 
 Web server deployed via infrastructure code:
 
-http://20.3.123.22
+~~http://20.3.123.22~~ Down for maintenance
 
 ## Architecture
 
